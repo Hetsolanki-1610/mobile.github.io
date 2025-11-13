@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Phone Store — Model X</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(8px); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-gray-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center font-bold text-white shadow">PS</div>
+        <div>
+          <h1 class="text-lg font-semibold text-gray-900">Phone Store</h1>
+          <p class="text-sm text-gray-500 -mt-1">Model X • Flagship</p>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-gray-600">
+        <a href="#features" class="hover:text-gray-900">Features</a>
+        <a href="#gallery" class="hover:text-gray-900">Gallery</a>
+        <a href="#reviews" class="hover:text-gray-900">Reviews</a>
+      </nav>
+      <button id="cartBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-500">Cart</button>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-6xl mx-auto px-4 py-10">
+
+    <!-- Product Top -->
+    <section class="grid md:grid-cols-2 gap-10 items-start">
+      <!-- Gallery -->
+      <div id="gallery" class="space-y-4">
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <img id="mainImg"
+            src="https://m.media-amazon.com/images/I/71LrlOt9+xL._SL1500_.jpg"
+            alt="Phone" class="w-full h-[350px] md:h-[500px] object-cover">
+        </div>
+        <div class="grid grid-cols-4 gap-3">
+          <img class="h-20 w-full object-cover rounded-lg cursor-pointer hover:scale-105 transition"
+            src="https://m.media-amazon.com/images/I/81MLY3HazGL._SL1500_.jpg"
+            onclick="setImage(this.src)" />
+          <img class="h-20 w-full object-cover rounded-lg cursor-pointer hover:scale-105 transition"
+            src="https://m.media-amazon.com/images/I/51aJfOD6N5L._SL1500_.jpg"
+            onclick="setImage(this.src)" />
+          <img class="h-20 w-full object-cover rounded-lg cursor-pointer hover:scale-105 transition"
+            src="https://m.media-amazon.com/images/I/81bKrad3vgL._SL1500_.jpg"
+            onclick="setImage(this.src)" />
+          <img class="h-20 w-full object-cover rounded-lg cursor-pointer hover:scale-105 transition"
+            src="https://m.media-amazon.com/images/I/71LOELiaPVL._SL1500_.jpg"
+            onclick="setImage(this.src)" />
+        </div>
+      </div>
+
+      <!-- Product Info -->
+      <div class="space-y-6">
+        <div class="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900">vivo V60e 5G</h2>
+            <p class="text-gray-500 mt-1">8GB / 256GB • Midnight Black</p>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-extrabold text-emerald-600">₹31,999</div>
+            <div class="text-sm text-gray-400 line-through">₹36,000</div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-white border border-gray-200 shadow-sm">
+          <h3 class="font-semibold mb-2 text-gray-900">Quick Specs</h3>
+          <ul class="grid grid-cols-2 gap-2 text-gray-600 text-sm">
+            <li>📱 6.7" AMOLED</li>
+            <li>⚡ 120W Fast Charge</li>
+            <li>🔋 5000 mAh</li>
+            <li>📷 108MP Triple Cam</li>
+            <li>💾 256GB Storage</li>
+            <li>🧠 Snapdragon 8 Gen</li>
+          </ul>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+          Model X Pro brings flagship performance, long battery life and a pro-grade camera. Perfect for photography, gaming and everyday use.
+        </p>
+
+        <div class="flex flex-wrap gap-3 items-center">
+          <select id="variant" class="bg-gray-100 text-gray-700 rounded p-2 border border-gray-300">
+            <option value="Midnight Black">Midnight Black — 8GB/256GB</option>
+            <option value="Ocean Blue">Ocean Blue — 12GB/512GB (+₹5,000)</option>
+            <option value="Sunset Red">Sunset Red — 8GB/128GB (-₹3,000)</option>
+          </select>
+
+          <button id="buyBtn"
+            class="ml-auto px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-lg shadow-lg transition">
+            Buy Now
+          </button>
+        </div>
+
+        <div class="text-sm text-gray-500">
+          Free delivery • 7-day returns • 1 year warranty
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Order Form Modal -->
+  <div id="orderModal" class="fixed inset-0 hidden items-center justify-center bg-black/60 p-4 z-40">
+    <div class="bg-white rounded-2xl shadow-lg w-full max-w-md p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold text-indigo-600">📝 Order Details</h3>
+        <button id="closeOrder" class="text-gray-500 hover:text-black">✕</button>
+      </div>
+
+      <form id="orderForm" class="grid gap-4">
+        <input name="name" required placeholder="Full Name" class="p-3 border rounded">
+        <input name="phone" required placeholder="Phone (10 digits)" pattern="[0-9]{10}" maxlength="10" class="p-3 border rounded">
+        <input name="state" required placeholder="State" class="p-3 border rounded">
+        <input name="city" required placeholder="City" class="p-3 border rounded">
+        <textarea name="address" required placeholder="Full Address (min 10 letters)" rows="3" minlength="10" class="p-3 border rounded"></textarea>
+        
+        <button type="submit" class="mt-2 bg-emerald-500 hover:bg-emerald-600 text-white py-3 rounded-lg font-semibold">
+          Send via WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Payment Section Modal -->
+  <div id="paymentModal" class="fixed inset-0 hidden items-center justify-center bg-black/60 p-4 z-40">
+    <div class="bg-white rounded-2xl shadow-lg w-full max-w-lg p-6">
+      <div class="flex justify-between items-center">
+        <h3 class="text-xl font-bold text-indigo-600">💳 Payment Options</h3>
+        <button id="closePayment" class="text-gray-500 hover:text-black">✕</button>
+      </div>
+
+      <div class="mt-4 text-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/UPI-Logo-vector.svg" alt="UPI" class="mx-auto h-20 mb-4">
+        <p class="text-gray-700 font-medium mb-2">Scan this QR with PhonePe / Google Pay</p>
+        <div class="w-48 h-48 mx-auto bg-gray-200 flex items-center justify-center rounded-md">
+          <span class="text-gray-400">[QR Code]</span>
+        </div>
+        <p class="mt-4 text-gray-600">UPI ID: <strong>phonestore@upi</strong></p>
+        <button id="paidBtn" class="mt-4 px-6 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600">I Paid</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setImage(src){ document.getElementById('mainImg').src = src; }
+
+    const buyBtn = document.getElementById('buyBtn');
+    const orderModal = document.getElementById('orderModal');
+    const closeOrder = document.getElementById('closeOrder');
+    const orderForm = document.getElementById('orderForm');
+    const paymentModal = document.getElementById('paymentModal');
+    const closePayment = document.getElementById('closePayment');
+    const paidBtn = document.getElementById('paidBtn');
+
+    // Open Order Form
+    buyBtn.addEventListener('click', () => {
+      orderModal.classList.remove('hidden');
+      orderModal.classList.add('flex');
+    });
+
+    // Close Order Form
+    closeOrder.addEventListener('click', () => {
+      orderModal.classList.add('hidden');
+      orderModal.classList.remove('flex');
+    });
+
+    // Form Submit => WhatsApp Send + Payment Modal
+    orderForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(orderForm);
+      const data = Object.fromEntries(formData.entries());
+
+      if (!/^\d{10}$/.test(data.phone)) {
+        alert("कृपया 10 अंकों का सही मोबाइल नंबर डालें!");
+        return;
+      }
+      if (data.address.length < 10) {
+        alert("पता कम से कम 10 अक्षरों का होना चाहिए!");
+        return;
+      }
+
+      const msg = `📱 नया ऑर्डर:
+नाम: ${data.name}
+मोबाइल: ${data.phone}
+राज्य: ${data.state}
+शहर: ${data.city}
+पता: ${data.address}
+प्रोडक्ट: Model X Pro
+राशि: ₹39,999`;
+
+      const url = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+
+      orderModal.classList.add('hidden');
+      orderModal.classList.remove('flex');
+      paymentModal.classList.remove('hidden');
+      paymentModal.classList.add('flex');
+    });
+
+    // Close Payment
+    closePayment.addEventListener('click', () => {
+      paymentModal.classList.add('hidden');
+      paymentModal.classList.remove('flex');
+    });
+
+    // Payment Done
+    paidBtn.addEventListener('click', () => {
+      alert('✅ Payment Received! Thank you for your order.');
+      paymentModal.classList.add('hidden');
+      paymentModal.classList.remove('flex');
+    });
+  </script>
+
+</body>
+</html>
