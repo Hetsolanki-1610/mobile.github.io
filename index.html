@@ -3,171 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phone Store</title>
+  <title>Premium Splash</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: scale(0.95);
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
 </head>
-<body class="bg-gray-50">
 
-  <!-- 🔹 Navbar -->
-  <nav class="bg-white shadow-md fixed w-full top-0 left-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-      <!-- Logo -->
-      <h1 class="text-2xl font-bold text-blue-600">Phone<span class="text-gray-800">Store</span></h1>
+<body class="bg-black">
 
-      <!-- Menu (Desktop) -->
-      <ul class="hidden md:flex space-x-8 font-medium text-gray-700">
-        <li><a href="#home" class="hover:text-blue-600 transition">Home</a></li>
-        <li><a href="#products" class="hover:text-blue-600 transition">Products</a></li>
-        <li><a href="#about" class="hover:text-blue-600 transition">About</a></li>
-        <li><a href="#contact" class="hover:text-blue-600 transition">Contact</a></li>
-      </ul>
+  <!-- SPLASH -->
+  <div id="splash" class="fixed inset-0 flex items-center justify-center bg-black overflow-hidden">
 
-      <!-- Mobile Menu Button -->
-      <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+    <!-- TEXT -->
+    <h1 class="text-4xl md:text-5xl font-bold tracking-[0.35em] fade-in text-yellow-400 z-10">
+      Prime Deals
+    </h1>
+
+    <!-- GOLD CIRCLE -->
+    <div id="circle"
+      class="absolute w-0 h-0 rounded-full transition-all ease-in-out"
+      style="background: radial-gradient(circle, #f5d27a, #d4a94f, #8c6a2b); transition-duration: 900ms;">
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden bg-white shadow-md md:hidden">
-      <ul class="flex flex-col items-center py-4 space-y-4 text-gray-700 font-medium">
-        <li><a href="#home" class="hover:text-blue-600">Home</a></li>
-        <li><a href="#products" class="hover:text-blue-600">Products</a></li>
-        <li><a href="#about" class="hover:text-blue-600">About</a></li>
-        <li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <section id="home" class="mt-[70px]">
-    <img src="https://www.gizmochina.com/wp-content/uploads/2021/11/Vivo-V23e-banner.jpg?x70461" 
-         alt="Shoes Banner" 
-         class="w-full h-[200px] md:h-[520px] object-cover object-center">
-    <div class="text-center mt-6">
-      <h2 class="text-4xl md:text-5xl font-extrabold">Welcome to <span class="text-blue-600">PhoneHub</span></h2>
-      <p class="text-gray-600 mt-3">Discover the latest smartphones with blazing speed, crystal displays, and top performance.</p>
-      <a href="#products" class="inline-block mt-6 bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition">Shop Now</a>
-    </div>
-  </section>
-
-
-  <section id="small-products" class="py-12 bg-gray-50">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-2xl font-bold text-center mb-8 text-gray-800">🔥 Best Accessories</h2>
-
-    <div class="flex flex-row  md:flex-row justify-center items-center gap-6">
-      
-      <!-- Bluetooth -->
-      <div class="bg-white rounded-xl shadow hover:shadow-lg transition w-64 p-4 text-center">
-        <div class="relative">
-          <img src="https://d3jbu7vaxvlagf.cloudfront.net/small/v2/category_media/basic_img_16875113998179.jpg"
-            alt="Bluetooth" class="rounded-lg w-full h-[80px] md:h-[200px] object-cover">
-        </div>
-        <h3 class="font-semibold text-gray-800 mt-3">Bluetooth</h3>
-        <p class="text-gray-600 text-sm">₹899</p>
-      </div>
-
-      <!-- Headphone -->
-      <div class="bg-white rounded-xl shadow hover:shadow-lg transition w-64 p-4 text-center">
-        <div class="relative">
-          <img src="https://media.tatacroma.com/Croma%20Assets/Entertainment/Headphones%20and%20Earphones/Images/266399_0_yv5qii.png"
-            alt="Headphone" class="rounded-lg w-full h-[80px] md:h-[200px]  object-cover">
-        </div>
-        <h3 class="font-semibold text-gray-800 mt-3">Headphone</h3>
-        <p class="text-gray-600 text-sm">₹1,499</p>
-      </div>
-
-      <!-- Cover -->
-      <div class="bg-white rounded-xl shadow hover:shadow-lg transition w-64 p-4 text-center">
-        <div class="relative">
-          <img src="https://m.media-amazon.com/images/I/61frPK8F1BL._AC_UF1000,1000_QL80_.jpg"
-            alt="Cover" class="rounded-lg w-full h-[80px] md:h-[200px]  object-cover">
-          <!-- <span
-            class="absolute top-2 left-2 bg-blue-600 text-white text-xs font-semibold px-2 py-1 rounded">Sale</span> -->
-        </div>
-        <h3 class="font-semibold text-gray-800 mt-3">MobileCover</h3>
-        <p class="text-gray-600 text-sm">₹299</p>
-      </div>
-
-    </div>
   </div>
-</section>
 
-<section id="products" class="py-16 bg-gray-50">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center mb-10 text-gray-800">📱 Latest Phones</h2>
+  <!-- FINAL SCREEN -->
+  <div id="finalScreen"
+    class="hidden fixed inset-0 flex items-center justify-center bg-black">
 
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+    <!-- BACKGROUND LOGO -->
+    <img src="ChatGPT Image Mar 21, 2026, 09_11_14 PM.png"
+      class="absolute w-72 " />
+    
 
-      <!-- Product 1 -->
-      <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden text-center">
-        <img src="https://m.media-amazon.com/images/I/71BiI-RQ+-L._SX679_.jpg" alt="Model X"
-          class="w-full h-[150px] md:h-[350px] object-cover">
-        <div class="p-4">
-          <h3 class="text-sm font-semibold text-gray-800">vivo V60e 5G</h3>
-          <p class="text-gray-600 text-xs mb-2">8GB | 256GB</p>
-          <p class="font-bold text-emerald-600 mb-2">₹31,999</p>
-          <button
-            class="bg-emerald-500 hover:bg-emerald-400 text-white text-sm px-4 py-2 rounded"  onclick="window.location.href='buy.html'">Buy Now</button>
-        </div>
-      </div>
-
-      <!-- Product 2 -->
-      <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden text-center">
-        <img src="https://m.media-amazon.com/images/I/61VoOrLnRgL._SL1080_.jpg" alt="Model Z"
-          class="w-full h-[150px] md:h-[350px] object-cover">
-        <div class="p-4">
-          <h3 class="text-sm font-semibold text-gray-800">Vivo V30e 5G </h3>
-          <p class="text-gray-600 text-xs mb-2">12GB | 512GB</p>
-          <p class="font-bold text-emerald-600 mb-2">₹59,999</p>
-          <button
-            class="bg-emerald-500 hover:bg-emerald-400 text-white text-sm px-4 py-2 rounded" onclick="window.location.href='buy.html'">Buy Now</button>
-        </div>
-      </div>
-
-      <!-- Product 3 -->
-      <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden text-center">
-        <img src="https://m.media-amazon.com/images/I/61k1bvaUF+L._AC_UF480,480_SR480,480_.jpg" alt="Model Y"
-          class="w-full h-[150px] md:h-[350px] object-cover">
-        <div class="p-4">
-          <h3 class="text-sm font-semibold text-gray-800">vivo v60</h3>
-          <p class="text-gray-600 text-xs mb-2">6GB | 128GB</p>
-          <p class="font-bold text-emerald-600 mb-2">₹24,999</p>
-          <button
-            class="bg-emerald-500 hover:bg-emerald-400 text-white text-sm px-4 py-2 rounded">Buy Now</button>
-        </div>
-      </div>
-
-      <!-- Product 4 -->
-      <div class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden text-center">
-        <img src="https://m.media-amazon.com/images/I/710EMTJwGLL._SX679_.jpg" alt="Model A"
-          class="w-full h-[150px] md:h-[350px] object-cover">
-        <div class="p-4">
-          <h3 class="text-sm font-semibold text-gray-800">Model A Prime</h3>
-          <p class="text-gray-600 text-xs mb-2">8GB | 128GB</p>
-          <p class="font-bold text-emerald-600 mb-2">₹29,999</p>
-          <button
-            class="bg-emerald-500 hover:bg-emerald-400 text-white text-sm px-4 py-2 rounded">Buy Now</button>
-        </div>
-      </div>
-
-    </div>
   </div>
-</section>
 
-
-
-  <!-- JS for mobile toggle -->
   <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+    window.onload = () => {
+      const circle = document.getElementById("circle");
+      const splash = document.getElementById("splash");
+      const final = document.getElementById("finalScreen");
 
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+      // Start animation
+      setTimeout(() => {
+        circle.style.width = "200vw";
+        circle.style.height = "200vw";
+      }, 600);
+
+      // Show final screen
+      setTimeout(() => {
+        splash.classList.add("hidden");
+        final.classList.remove("hidden");
+      }, 1400);
+
+      // Auto redirect (IMPORTANT)
+      setTimeout(() => {
+        window.location.href = "index1.html"; // 👉 change page here
+      }, 3000);
+    };
   </script>
 
 </body>
